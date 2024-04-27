@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Message to Telegram</title>
+</head>
+<body>
+    <input type="text" id="messageInput" placeholder="Enter your message">
+    <button onclick="sendMessage()">Send Message</button>
+
+    <script>
+        function sendMessage() {
+            // Get the message from the input field
+            var message = document.getElementById("messageInput").value;
+
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // Define the request parameters
+            const YOUR_BOT_TOKEN = "6436182498:AAH2XbMcZQ04eq18VSqetd__elKxGADp8O8";
+            const YOUR_CHAT_ID = "1366123599";
+            xhr.open("GET", "https://api.telegram.org/bot" + YOUR_BOT_TOKEN + "/sendMessage?chat_id=" + YOUR_CHAT_ID + "&text=" + message, true);
+
+            // Send the request
+            xhr.send();
+
+            // Clear the input field
+            document.getElementById("messageInput").value = "";
+
+            // Optionally, you can display a confirmation message to the user
+            alert("Message sent to Telegram!");
+        }
+    </script>
+</body>
+</html>
